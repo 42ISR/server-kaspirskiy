@@ -125,7 +125,14 @@ services:
 #  database_volume:
 #  gpg_volume:
 #  jwt_volume:
-
+    feedback-backend:
+        container_name: fedback-backend
+        build: ./feedback-backend/.
+        restart: unless-stopped
+        ports:
+            - 3001:3001
+        volumes:
+            - ./feedback-backend/database.json:/app/database.json
 
 networks:
     proxy:
